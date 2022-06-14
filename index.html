@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes</title>
+
+    <style>
+        body {
+            background: #eee;
+        }
+
+        div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top:100px;
+        }
+
+        button {
+            margin-top: 40px;
+            font-size: 28px;
+            border-radius: 5px;
+            border: 0;
+            background-color: violet;
+            color: #00000075;
+            font-family: 'comic sans', sans-serif;
+            padding: 5px;
+        }
+
+        button :not(:hover) {
+            margin-top: 40px;
+            font-size: 25px;
+            border-radius: 5px;
+            border: 0;
+            background-color: #fff;
+            color: #000;
+            font-family: 'comic sans', sans-serif;
+            padding: 5px;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background-color: purple;
+            color: #fff;
+            transition: all 0.2s;
+            box-shadow: 2px 2px 5px #00000075;
+        }
+
+        p {
+            margin-top: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            color:#00000099;
+        }
+        .joke{
+            width:80%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button>Get Joke</button>
+        <div class="joke">
+        <p class="text"></p>
+        <div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
