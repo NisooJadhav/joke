@@ -1,60 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="random dad jokes">
-
-    <title>Jokes</title>
-    <link rel="shortcut icon" href="https://cdn.pixabay.com/photo/2014/04/02/11/05/emoticon-305443__340.png"
-        type="image/x-icon">
+    <title>Dad Jokes</title>
+    <meta name="description" content="Random Dad Jokes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://nisoojadhav.github.io/joke">
+    <link rel="dns-prefetch" href="https://nisoojadhav.github.io/joke">
+    <link rel="canonical" href="https://nisoojadhav.github.io/joke">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%2210 0 100 100%22><text y=%22.90em%22 font-size=%2290%22>😂</text></svg>">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@dadjokes">
+    <meta name="twitter:creator" content="@nisoojadhav">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Dad Jokes">
+    <meta property="og:url" content="https://nisoojadhav.github.io/joke">
+    <meta property="og:title" content="Random Dad Jokes">
     <style>
         body {
             background: #eee;
         }
+        main,
         div {
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            margin-top:75px;
+            margin-top: 75px;
         }
-        button{
+        button {
             margin-top: 40px;
             font-size: 50px;
             border-radius: 10px;
             background-color: transparent;
             padding: 15px;
-            transition: all 0.2s;
-            border:1px solid #aaaaaa50;
+            transition: all 0.4s;
+            border: 1px solid #aaaaaa50;
         }
         button:hover {
             transition: all 0.2s;
             box-shadow: 2px 2px 5px #00000050;
+            cursor: pointer;
         }
         p {
             margin-top: 45px;
             font-family: Arial, Helvetica, sans-serif;
             font-size: 30px;
-            color:#00000099;
+            color: #00000099;
         }
-        .joke{
-            width:80%;
+        .joke {
+            width: 80%;
         }
     </style>
 </head>
-
 <body>
-    <div>
+    <main>
         <button>😂</button>
         <div class="joke">
-        <p class="text"></p>
-        <div>
-    </div>
-
-    <script src="app.js"></script>
+            <p class="text"></p>
+        </div>
+    </main>
+    <script>
+        const url = "https://icanhazdadjoke.com/"
+        const text = document.querySelector("p")
+        document.querySelector("button").addEventListener('click', () => {
+            fetchJoke();
+        });
+        const fetchJoke = async () => {
+            text.innerText = "loading..."
+            try {
+                const res = await fetch(url, {
+                    headers: {
+                        Accept: 'application/json',
+                    }
+                })
+                if (!res.ok) {
+                    throw new Error('error')
+                }
+                const data = await res.json()
+                text.innerHTML = data.joke;
+            }
+            catch (e) {
+                console.error(e.message)
+                text.innerHTML = "something went wrong..."
+            }
+        }
+    </script>
 </body>
-
 </html>
